@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Meme } from "./components/Meme";
+import { Button } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
+
 import './styles/style.css'
 
 const objectToQueryParam = obj => {
@@ -52,23 +55,26 @@ function App() {
           }}
         >
           <Meme template={template} />
-          <input
-            placeholder="top text"
+
+          <TextField 
+            label="primera parte"
             value={topText}
             onChange={e => setTopText(e.target.value)}
+          
           />
-          <input
-            placeholder="bottom text"
+          <TextField 
+            label="segunda parte"
             value={bottomText}
             onChange={e => setBottomText(e.target.value)}
           />
-          <button type="submit">create meme</button>
+          
+          <Button type="submit">crear meme</Button>
         </form>
       )}
       {!template && (
         <>
           <h1 className='titulo' >PERSONALIZA TUS MEMES</h1>
-          <h2>elige tu meme favorito:</h2>
+          <h2 className='parrafo' >elige tu meme favorito:</h2>
           {templates.map(template => {
             return (
               <Meme
