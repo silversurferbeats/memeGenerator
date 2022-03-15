@@ -16,10 +16,11 @@ function App() {
   const [topText, setTopText] = useState("");
   const [bottomText, setBottomText] = useState("");
   const [meme, setMeme] = useState(null);
-
   useEffect(() => {
-    fetch("https://api.imgflip.com/get_memes").then(x =>
-      x.json().then(response => setTemplates(response.data.memes))
+    fetch("https://api.imgflip.com/get_memes")
+    .then(x =>
+      x.json()
+      .then(response => setTemplates(response.data.memes))
     );
   }, []);
 
@@ -42,15 +43,14 @@ function App() {
               template_id: template.id,
               text0: topText,
               text1: bottomText,
-              username: "xzk03017",
-              password: "xzk03017@cndps.com"
+              username: process.env.REACT_APP_USERNAME,
+              password: process.env.REACT_APP_PASSWORD
             };
             const response = await fetch(
-              `https://api.imgflip.com/caption_image${objectToQueryParam(
-                params
-              )}`
+              `https://api.imgflip.com/caption_image${objectToQueryParam(params)}`
             );
             const json = await response.json();
+        
             setMeme(json.data.url);
           }}
         >
@@ -75,9 +75,10 @@ function App() {
         <>
           <h1 className='titulo' >PERSONALIZA TUS MEMES</h1>
           <h2 className='parrafo' >elige tu meme favorito:</h2>
-          {templates.map(template => {
+          {templates.map((template, index) => {
             return (
               <Meme
+                key={template.id}
                 template={template}
                 onClick={() => {
                   setTemplate(template);
