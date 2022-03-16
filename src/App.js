@@ -74,7 +74,7 @@ function App() {
       {!template && (
         <>
           <h1 className='titulo' >PERSONALIZA TUS MEMES</h1>
-          <h2 className='parrafo' >elige tu meme favorito:</h2>
+          <h2 className='parrafo' >Elige tu meme favorito:</h2>
           {templates.map((template, index) => {
             return (
               <Meme
