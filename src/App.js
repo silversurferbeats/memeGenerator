@@ -35,57 +35,66 @@ function App() {
   return (
     <div style={{ textAlign: "center" }}>
       {template && (
-        <form
-          onSubmit={async e => {
-            e.preventDefault();
-            // add logic to create meme from api
-            const params = {
-              template_id: template.id,
-              text0: topText,
-              text1: bottomText,
-              username: process.env.REACT_APP_USERNAME,
-              password: process.env.REACT_APP_PASSWORD
-            };
-            const response = await fetch(
-              `https://api.imgflip.com/caption_image${objectToQueryParam(params)}`
-            );
-            const json = await response.json();
-        
-            setMeme(json.data.url);
-          }}
-        >
-          <Meme template={template} />
+        <section>
+          <div className="contenedor">
+            <form
+              onSubmit={async e => {
+                e.preventDefault();
+                // add logic to create meme from api
+                const params = {
+                  template_id: template.id,
+                  text0: topText,
+                  text1: bottomText,
+                  username: process.env.REACT_APP_USERNAME,
+                  password: process.env.REACT_APP_PASSWORD
+                };
+                const response = await fetch(
+                  `https://api.imgflip.com/caption_image${objectToQueryParam(params)}`
+                );
+                const json = await response.json();
+            
+                setMeme(json.data.url);
+              }}
+            >
+              <Meme template={template} />
 
-          <TextField 
-            label="primera parte"
-            value={topText}
-            onChange={e => setTopText(e.target.value)}
-          
-          />
-          <TextField 
-            label="segunda parte"
-            value={bottomText}
-            onChange={e => setBottomText(e.target.value)}
-          />
-          
-          <Button type="submit">crear meme</Button>
-        </form>
+              <TextField 
+                label="primera parte"
+                value={topText}
+                onChange={e => setTopText(e.target.value)}
+              
+              />
+              <TextField 
+                label="segunda parte"
+                value={bottomText}
+                onChange={e => setBottomText(e.target.value)}
+              />
+              
+              <Button type="submit">crear meme</Button>
+            </form>
+          </div>
+        </section>
       )}
       {!template && (
         <>
-          <h1 className='titulo' >PERSONALIZA TUS MEMES</h1>
-          <h2 className='parrafo' >Elige tu meme favorito:</h2>
-          {templates.map((template, index) => {
-            return (
-              <Meme
-                key={template.id}
-                template={template}
-                onClick={() => {
-                  setTemplate(template);
-                }}
-              />
-            );
-          })}
+          <section>
+            <h1 className='titulo' >PERSONALIZA TUS MEMES</h1>
+            <h2 className='parrafo' >Elige tu meme favorito:</h2>
+            <div className="contenedor">
+              {templates.map((template, index) => {
+                return (
+                  <Meme
+                    className="Meme"
+                    key={template.id}
+                    template={template}
+                    onClick={() => {
+                      setTemplate(template);
+                    }}
+                  />
+                );
+              })}
+            </div>
+          </section>
         </>
       )}
     </div>
