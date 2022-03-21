@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Meme } from "./components/Meme";
 import { Button } from "@material-ui/core";
 import { TextField } from "@material-ui/core";
-
 import './styles/style.css'
+import { motion } from 'framer-motion';
 
 const objectToQueryParam = obj => {
   const params = Object.entries(obj).map(([key, value]) => `${key}=${value}`);
@@ -56,7 +56,7 @@ function App() {
                 setMeme(json.data.url);
               }}
             >
-              <Meme template={template} />
+              <Meme className='memeTemplate' template={template} />
 
               <TextField 
                 label="primera parte"
@@ -77,24 +77,31 @@ function App() {
       )}
       {!template && (
         <>
-          <section>
-            <h1 className='titulo' >PERSONALIZA TUS MEMES</h1>
-            <h2 className='parrafo' >Elige tu meme favorito:</h2>
-            <div className="contenedor">
-              {templates.map((template, index) => {
-                return (
-                  <Meme
-                    className="Meme"
-                    key={template.id}
-                    template={template}
-                    onClick={() => {
-                      setTemplate(template);
-                    }}
-                  />
-                );
-              })}
-            </div>
-          </section>
+          <h1 className='titulo' >PERSONALIZA TUS MEMES</h1>
+          <h2 className='parrafo' >Elige tu meme favorito:</h2>
+          <motion.div className='slider-container'>
+                <motion.div 
+                  className='slider' 
+                  drag='x' 
+                  dragConstraints={{right: 0, left: -2123}} 
+                >
+                {templates.map((template, index) => {
+                  return(
+                    <motion.div className='item'>
+                      {console.log('lo que me trae del map =>', template.url)}
+                      <Meme
+                        className="Meme"
+                        key={index}
+                        template={template}
+                        onClick={() => {
+                          setTemplate(template);
+                        }}
+                      />
+                    </motion.div>
+                  )
+                })}
+                </motion.div>
+              </motion.div>
         </>
       )}
     </div>

@@ -1,6 +1,7 @@
 import React from "react";
 
 export const Meme = ({ template, onClick }) => {
+  console.log(template);
   return (
     <img
       style={{ width: 200 }}
