@@ -7,6 +7,7 @@ export const Meme = ({ template, onClick }) => {
       src={template.url}
       alt={template.name}
       onClick={onClick}
+      download
     />
   );
 };
