@@ -99,7 +99,8 @@ function App() {
         )}
         {!template && (
           <>
-            <h1 className='titulo' >PERSONALIZA TUS MEMES</h1>
+            <h1 className='titulo' >X-TREMEME</h1>
+
             <h2 className='parrafo' >Elige tu meme favorito:</h2>
             <motion.div className='slider-container'>
                   <motion.div 

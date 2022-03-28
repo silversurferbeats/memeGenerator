@@ -4,21 +4,21 @@
   
 body {
     font-family: 'Shadows Into Light', cursive;
-    background: linear-gradient(
+    /* background: linear-gradient(
     to bottom,
     rgba(0,0,0, 0),
     rgba(0,0,0, 100)
     ),url(../img/background2.jpg);
     background-size: 100%;
-    height: 100vh;
-    /* background: rgba(207,120,188,1);
+    height: 100vh; */
+    background: rgba(207,120,188,1);
     background: -moz-radial-gradient(center, ellipse cover, rgba(207,120,188,1) 0%, rgba(163,0,122,1) 43%, rgba(186,30,178,1) 61%, rgba(212,165,196,1) 100%);
     background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(207,120,188,1)), color-stop(43%, rgba(163,0,122,1)), color-stop(61%, rgba(186,30,178,1)), color-stop(100%, rgba(212,165,196,1)));
     background: -webkit-radial-gradient(center, ellipse cover, rgba(207,120,188,1) 0%, rgba(163,0,122,1) 43%, rgba(186,30,178,1) 61%, rgba(212,165,196,1) 100%);
     background: -o-radial-gradient(center, ellipse cover, rgba(207,120,188,1) 0%, rgba(163,0,122,1) 43%, rgba(186,30,178,1) 61%, rgba(212,165,196,1) 100%);
     background: -ms-radial-gradient(center, ellipse cover, rgba(207,120,188,1) 0%, rgba(163,0,122,1) 43%, rgba(186,30,178,1) 61%, rgba(212,165,196,1) 100%);
     background: radial-gradient(ellipse at center, rgba(207,120,188,1) 0%, rgba(163,0,122,1) 43%, rgba(186,30,178,1) 61%, rgba(212,165,196,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cf78bc', endColorstr='#d4a5c4', GradientType=1 ); */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cf78bc', endColorstr='#d4a5c4', GradientType=1 );
 }
 
 form {
@@ -34,16 +34,23 @@ form {
 }
 
 
-h1 {
-    background-image: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(178,255,228,1) 92%);
+.titulo {
+    /* background-image: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(178,255,228,1) 92%);
     color: transparent;
-    -webkit-background-clip: text;
-    animation: move 2s infinite;
+    -webkit-background-clip: text; */
+    margin-left: 20%;
+    margin-right: 20%;
+    opacity: 0;
+    animation: fade-in 5s forwards;
+
+    border-radius: 100px;
+    background: #e868cd;
+    box-shadow:  10px 10px 20px #e165c7,
+                -10px -10px 20px #ef6bd3;
 }
-@keyframes move {
-    50% {
-        background-image: linear-gradient(262deg, rgba(0,0,0,1) 0%, rgba(178,255,228,1) 92%);
-    }
+@keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 .parrafo {
@@ -87,11 +94,6 @@ h1 {
     margin: 0 auto;
     overflow-x: hidden;
 }
-
-
-
-
-
 
 /* media query responsive */
 
