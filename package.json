@@ -3,6 +3,9 @@
   "name": "memegenerator",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "20.x"
+  },
   "dependencies": {
     "@material-ui/core": "^4.12.2",
     "firebase": "^9.6.8",

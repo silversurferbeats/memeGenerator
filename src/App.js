@@ -106,7 +106,6 @@ function App() {
               <motion.div
                 className="slider"
                 drag="x"
-                //dragConstraints={{right: 0, left: -2123}}
               >
                 {templates.map((template) => {
                   return (
