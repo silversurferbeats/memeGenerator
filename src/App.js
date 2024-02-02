@@ -55,47 +55,43 @@ function App() {
     <>
       <div className="app-container">
         {template && (
-          <section>
-            <Tilt>
-              <div className="contenedor">
-                <form
-                  onSubmit={async (e) => {
-                    e.preventDefault();
-                    // add logic to create meme from api
-                    const params = {
-                      template_id: template.id,
-                      text0: topText,
-                      text1: bottomText,
-                      username: process.env.REACT_APP_USERNAME,
-                      password: process.env.REACT_APP_PASSWORD,
-                    };
-                    const response = await fetch(
-                      `https://api.imgflip.com/caption_image${objectToQueryParam(
-                        params
-                      )}`
-                    );
-                    const json = await response.json();
-                    setMeme(json.data.url);
-                  }}
-                >
-                  <Meme className="memeTemplate" template={template} />
+          <motion.div className="slider-container">
+            <form
+              onSubmit={async (e) => {
+                e.preventDefault();
+                // add logic to create meme from api
+                const params = {
+                  template_id: template.id,
+                  text0: topText,
+                  text1: bottomText,
+                  username: process.env.REACT_APP_USERNAME,
+                  password: process.env.REACT_APP_PASSWORD,
+                };
+                const response = await fetch(
+                  `https://api.imgflip.com/caption_image${objectToQueryParam(
+                    params
+                  )}`
+                );
+                const json = await response.json();
+                setMeme(json.data.url);
+              }}
+            >
+              <Meme className="memeTemplate" template={template} />
 
-                  <TextField
-                    label="primera parte"
-                    value={topText}
-                    onChange={(e) => setTopText(e.target.value)}
-                  />
-                  <TextField
-                    label="segunda parte"
-                    value={bottomText}
-                    onChange={(e) => setBottomText(e.target.value)}
-                  />
+              <TextField
+                label="primera parte"
+                value={topText}
+                onChange={(e) => setTopText(e.target.value)}
+              />
+              <TextField
+                label="segunda parte"
+                value={bottomText}
+                onChange={(e) => setBottomText(e.target.value)}
+              />
 
-                  <Button type="submit">crear meme</Button>
-                </form>
-              </div>
-            </Tilt>
-          </section>
+              <Button type="submit">crear meme</Button>
+            </form>
+          </motion.div>
         )}
         {!template && (
           <>
@@ -103,10 +99,7 @@ function App() {
 
             <h2 className="parrafo">Elige tu meme favorito:</h2>
             <motion.div className="slider-container">
-              <motion.div
-                className="slider"
-                drag="x"
-              >
+              <motion.div className="slider" drag="x">
                 {templates.map((template) => {
                   return (
                     <motion.div
